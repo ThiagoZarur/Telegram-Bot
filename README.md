@@ -1,5 +1,4 @@
 # Telegram-Bot
-Legado Financiero Bot
 
 Legado Financiero bot
 
