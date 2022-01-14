@@ -2,27 +2,39 @@ from telegram import Update, ParseMode, Poll, InlineKeyboardButton, InlineKeyboa
 from telegram.ext import Updater, MessageHandler, Filters, CallbackContext, dispatcher,CommandHandler
 
 #Token de la API
-TOKEN = '2116461521:AAE7epHA5Pv0P8B2oFax7MeEETES4z5bKqo'
+TOKEN = 'Your token'
+
+emoji1 = "\U0001F913"
+emoji2 = "\U0001F4B0"
+emoji3 = "\U0001F4AC"
+emoji4 = "\U0001F4DA"
+emoji5 = "\U0001F911"
+emoji6 = "\U0001F4C8"
+emoji7 = "\U0001F4C9"
+emoji8 = "\U0001F193"
+emoji9 = "\U0001F60E"
+
 
 #Mensaje de bienvenida
 def start(update, context : CallbackContext):
     print(update.message.chat.id)
-    update.message.reply_text("""
+
+    update.message.reply_text(f"""
     ¡Hola Bienvenid@ al bot de Legado Financiero!
     Haz click en lo que te interesa
-    - /Invertir 
-    - /Educarme
-    - /Help
+    - /Invertir {emoji2}
+    - /Educarme {emoji1} {emoji4}
+    - /Help {emoji3}
     """)
 
 def educarme(update: Updater, context:CallbackContext):
-    update.message.reply_text(''' 
+    update.message.reply_text(f''' 
         Elige/click en una opción
-    - /ContenidosGratuitos
-    - /Mentoria
+    - /ContenidosGratuitos {emoji8}
+    - /Mentoria {emoji9}
     ''')
 
-def contenido_Gratuito(update:Updater, context: CallbackContext):
+def contenido_gratuito(update:Updater, context: CallbackContext):
     update.message.reply_text("Bienvenido al contenido gratuito de Legado Financiero, te dejamos el video de bienvenida, ¡esperamos que lo disfrutes!")
     update.message.reply_text("<a href = 'https://www.youtube.com/watch?v=9W1vQWtdbVM'>Video de bienvenida</a>", parse_mode = ParseMode.HTML)
 
@@ -40,7 +52,7 @@ def contenido_Gratuito(update:Updater, context: CallbackContext):
         url = 'https://www.youtube.com/c/LegadoFinanciero')
 
     update.message.reply_text(
-        text = 'En los siguientes botones puedes registrarte a nuestra página web, seguirnos en nuestras redes sociales o conocer nuestros productos /Productos',
+        text = f'En los siguientes botones puedes registrarte a nuestra página web, seguirnos en nuestras redes sociales o conocer nuestros productos /Productos {emoji6} {emoji7}',
         reply_markup = InlineKeyboardMarkup([
            [button1], [button2],[button3]
         ])
@@ -87,7 +99,7 @@ def mentoria(update: Updater, context: CallbackContext):
     )
 
     update.message.reply_text(
-    text = '     Contenido VIP',
+    text = f'Contenido VIP {emoji5}',
     reply_markup = InlineKeyboardMarkup([
     [button7],[button8],[button9]
     ])
@@ -119,7 +131,7 @@ def main():
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler('Educarme', educarme))
     dispatcher.add_handler(CommandHandler('Mentoria', mentoria))
-    dispatcher.add_handler(CommandHandler('ContenidosGratuitos', contenido_Gratuito))
+    dispatcher.add_handler(CommandHandler('ContenidosGratuitos', contenido_gratuito))
     dispatcher.add_handler(CommandHandler('Productos', productos))
     dispatcher.add_handler(CommandHandler('Help', help))
 
